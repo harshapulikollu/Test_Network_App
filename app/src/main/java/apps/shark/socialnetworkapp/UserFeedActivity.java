@@ -32,6 +32,8 @@ import com.parse.ParseUser;
 
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class UserFeedActivity extends AppCompatActivity {
 
     String activeUsername;
@@ -41,7 +43,7 @@ public class UserFeedActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_feed);
 
         TextView profilename = (TextView) findViewById(R.id.profileName);
-        final ImageView profilepic = (ImageView) findViewById(R.id.profilePic);
+        final CircleImageView profilepic = (CircleImageView) findViewById(R.id.profilePic);
         final TextView postsNumber =  (TextView) findViewById(R.id.posts);
 
         final LinearLayout linearLayout = (LinearLayout) findViewById(R.id.linearLayout);

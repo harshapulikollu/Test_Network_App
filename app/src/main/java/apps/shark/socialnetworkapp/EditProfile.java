@@ -31,13 +31,15 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 /**
  * Created by Harsha on 7/27/2017.
  */
 
 public class EditProfile extends AppCompatActivity {
 
-    ImageView ProfilePic;
+     CircleImageView ProfilePic;
 
     public void getPhoto() {
 
@@ -124,7 +126,7 @@ public class EditProfile extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
-         ProfilePic = (ImageView) findViewById(R.id.profile_pic);
+         ProfilePic = (CircleImageView) findViewById(R.id.profile_pic);
         ImageButton addNewDp = (ImageButton)findViewById(R.id.Add_new_dp);
 
         addNewDp.setOnClickListener(new View.OnClickListener() {

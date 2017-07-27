@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">SocialNetworkApp</string>
+
+    <string name="parse_app_id">9732e47b2539a77ffdfecac243843e15b552e470</string>
+    <string name="parse_client_key">2186c420387c1d351ed103ef96509522851cbfc4</string>
+</resources>

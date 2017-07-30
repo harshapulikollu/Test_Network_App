@@ -184,6 +184,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
     }
+    @Override
+    public void onBackPressed() {
+        if (ParseUser.getCurrentUser() == null) {
 
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+           // finish();
+           // super.onBackPressed();
+            //  Toast.makeText(MainActivity.this, ParseUser.getCurrentUser().getUsername().toString(), Toast.LENGTH_LONG).show();
+        }
+
+
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+       //     Intent intent = new Intent(this, MainActivity.class);
+        //    startActivity(intent);
+
+
+
+
+    }
 
 }

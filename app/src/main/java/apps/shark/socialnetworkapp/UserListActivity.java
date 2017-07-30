@@ -234,4 +234,10 @@ public class UserListActivity extends AppCompatActivity {
 
 
     }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        super.onBackPressed();
+    }
 }

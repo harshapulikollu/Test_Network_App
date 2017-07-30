@@ -10,14 +10,18 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -47,6 +51,7 @@ public class UserFeedActivity extends AppCompatActivity {
         final TextView postsNumber =  (TextView) findViewById(R.id.posts);
 
         final LinearLayout linearLayout = (LinearLayout) findViewById(R.id.linearLayout);
+
 
         Intent intent = getIntent();
 
@@ -120,6 +125,25 @@ public class UserFeedActivity extends AppCompatActivity {
 
                                         Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
 
+                                       // CardView cardView = new CardView(getApplicationContext());
+                                     /*   cardView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                                                ViewGroup.LayoutParams.WRAP_CONTENT)); */
+                                        CardView.LayoutParams layoutParams = new CardView.LayoutParams(
+                                                CardView.LayoutParams.MATCH_PARENT, CardView.LayoutParams.WRAP_CONTENT);
+                                        layoutParams.setMargins(75,75,75,0);
+                                        CardView cv = new CardView(getBaseContext());
+                                        cv.setLayoutParams(layoutParams);
+                                       // cardView.setRadius(15);
+
+
+
+                                       // cardView.setPadding(25, 25, 25, 25);
+
+                                       // cv.setCardBackgroundColor(Color.MAGENTA);
+
+                                        cv.setMaxCardElevation(30);
+
+                                       // cardView.setMaxCardElevation(6);
                                         ImageView imageView = new ImageView(getApplicationContext());
 
                                         imageView.setLayoutParams(new ViewGroup.LayoutParams(
@@ -128,9 +152,11 @@ public class UserFeedActivity extends AppCompatActivity {
                                         ));
 
                                         imageView.setImageBitmap(bitmap);
-
-                                        linearLayout.addView(imageView);
-
+                                       cv.addView(imageView);
+                                        // cardView.addView(imageView);
+                                       // linearLayout.addView(imageView);
+                                      //  linearLayout.addView(cardView);
+                                            linearLayout.addView(cv);
                                     }
 
 

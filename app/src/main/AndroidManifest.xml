@@ -23,14 +23,17 @@
             android:name="com.parse.CLIENT_KEY"
             android:value="@string/parse_client_key" />
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-        <activity android:name=".UserListActivity" />
+        <activity android:name=".UserListActivity"
+            />
         <activity android:name=".UserFeedActivity"/>
         <activity android:name=".EditProfile">
         </activity>

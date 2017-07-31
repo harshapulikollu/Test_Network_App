@@ -1,5 +1,6 @@
 package apps.shark.socialnetworkapp;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,7 +34,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, View.OnKeyListener {
 
     Boolean signUpModeActive = true;
-
+    ProgressBar progressBar;
     TextView changeSignupModeTextView;
 
     EditText passwordEditText;
@@ -101,6 +103,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             if (signUpModeActive) {
 
+                progressBar.setVisibility(View.VISIBLE);
                 ParseUser user = new ParseUser();
 
                 user.setUsername(usernameEditText.getText().toString());
@@ -125,6 +128,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             } else {
 
+                progressBar.setVisibility(View.VISIBLE);
                 ParseUser.logInInBackground(usernameEditText.getText().toString(), passwordEditText.getText().toString(), new LogInCallback() {
                     @Override
                     public void done(ParseUser user, ParseException e) {
@@ -138,7 +142,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         } else {
 
                             Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-
+                            progressBar.setVisibility(View.INVISIBLE);
                         }
 
 
@@ -156,9 +160,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        setTitle("Social n/w");
-
+           // setContentView(R.layout.material_activity_main);
+        //setTitle("Social n/w");
+        progressBar = (ProgressBar)findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.INVISIBLE);
         changeSignupModeTextView = (TextView) findViewById(R.id.changeSignupModeTextView);
 
         changeSignupModeTextView.setOnClickListener(this);

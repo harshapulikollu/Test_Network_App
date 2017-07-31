@@ -130,7 +130,7 @@ public class UserFeedActivity extends AppCompatActivity {
                                                 ViewGroup.LayoutParams.WRAP_CONTENT)); */
                                         CardView.LayoutParams layoutParams = new CardView.LayoutParams(
                                                 CardView.LayoutParams.MATCH_PARENT, CardView.LayoutParams.WRAP_CONTENT);
-                                        layoutParams.setMargins(75,75,75,0);
+                                        layoutParams.setMargins(25,25,25,0);
                                         CardView cv = new CardView(getBaseContext());
                                         cv.setLayoutParams(layoutParams);
                                        // cardView.setRadius(15);

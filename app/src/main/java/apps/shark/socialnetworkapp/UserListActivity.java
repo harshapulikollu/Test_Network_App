@@ -24,6 +24,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
@@ -39,12 +40,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class UserListActivity extends AppCompatActivity {
 
+    ProgressBar progressBar;
     public void getPhoto() {
 
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent, 1);
+        progressBar.setVisibility(View.VISIBLE);
 
     }
 
@@ -121,6 +126,7 @@ public class UserListActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+
         if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
 
             Uri selectedImage = data.getData();
@@ -148,7 +154,7 @@ public class UserListActivity extends AppCompatActivity {
                 object.saveInBackground(new SaveCallback() {
                     @Override
                     public void done(ParseException e) {
-
+                        progressBar.setVisibility(View.INVISIBLE);
                         if (e == null) {
 
                             Toast.makeText(UserListActivity.this, "Image Shared!", Toast.LENGTH_SHORT).show();
@@ -181,6 +187,8 @@ public class UserListActivity extends AppCompatActivity {
         final ArrayList<String> usernames = new ArrayList<String>();
 
         final ListView userListView = (ListView) findViewById(R.id.userListView);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.INVISIBLE);
 
         userListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

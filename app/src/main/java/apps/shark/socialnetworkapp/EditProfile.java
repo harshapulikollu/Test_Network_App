@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
@@ -40,11 +41,13 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class EditProfile extends AppCompatActivity {
 
      CircleImageView ProfilePic;
+    ProgressBar progressBar;
 
     public void getPhoto() {
 
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent, 1);
+        progressBar.setVisibility(View.VISIBLE);
 
     }
 
@@ -97,6 +100,7 @@ public class EditProfile extends AppCompatActivity {
                     @Override
                     public void done(ParseException e) {
 
+                        progressBar.setVisibility(View.INVISIBLE);
                         if (e == null) {
 
                             Toast.makeText(EditProfile.this, "New profile pic added!", Toast.LENGTH_SHORT).show();
@@ -128,7 +132,8 @@ public class EditProfile extends AppCompatActivity {
         setContentView(R.layout.activity_edit_profile);
          ProfilePic = (CircleImageView) findViewById(R.id.profile_pic);
         ImageButton addNewDp = (ImageButton)findViewById(R.id.Add_new_dp);
-
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.INVISIBLE);
         addNewDp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

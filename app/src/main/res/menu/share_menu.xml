@@ -7,4 +7,6 @@
 
     <item android:title="edit profile" android:id="@+id/edit_profile" />
 
+    <item android:title="Home Feed" android:id="@+id/home_feed" />
+
 </menu>

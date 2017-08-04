@@ -41,6 +41,7 @@
             android:configChanges="orientation|keyboardHidden|screenSize"/>
         <activity android:name=".EditProfile">
         </activity>
+        <activity android:name=".HomeFeed"></activity>
     </application>
 
 </manifest>

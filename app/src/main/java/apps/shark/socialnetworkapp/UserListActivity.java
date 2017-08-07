@@ -119,6 +119,7 @@ public class UserListActivity extends AppCompatActivity {
 
         }else if (item.getItemId()== R.id.home_feed){
             Intent intent = new Intent(this, HomeFeed.class);
+
             intent.putExtra("username",ParseUser.getCurrentUser().getUsername().toString());
             startActivity(intent);
         }
